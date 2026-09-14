@@ -13,12 +13,20 @@
 bmad-product/
 ├── _bmad/              # 框架本体（core / bmm / custom / scripts / render / _config）
 ├── _bmad-output/       # 所有产出物统一落这里（BRIEF / PRD / ARCH / STORIES / 代码）
+│   └── planning-artifacts/
+│       ├── briefs/<brief-dir>/      # BRIEF 原位 + addendum.md + .memlog.md + _archive/
+│       └── prds/<prd-dir>/          # PRD 原位 + addendum.md + .memlog.md + _archive/
+├── docs/               # 面向人的文档门户（可独立移交）
+│   ├── README.md                    # 产品文档清单与状态
+│   └── product/                     # 有效文档 4 份 + _archive/ 10 份 + README.md（规则）
 ├── .agents/skills/     # ★ 29 个 BMAD skill 真实位置（Cursor 3.20 自动加载）
-└── README.md
+└── README.md           # ← 本文件（框架层）
 ```
 
 ⚠️ **关键纠正**：BMAD v6 安装器 `--tools cursor` 实际落地的是 **`.agents/skills/`**（Agent Skills 规范），
 **不是** 旧的 `.cursor/rules/bmad`（那是空占位目录）。Cursor 打开本项目后，`@bmad-xxx` 直接从 `.agents/skills/` 加载。
+
+**索引分工**：本文件 = 框架层（怎么装的、目录怎么组织）；[`docs/README.md`](./docs/README.md) = 产品文档清单（有哪些、什么版本）；[`docs/product/README.md`](./docs/product/README.md) = 目录规则（命名、归档、双轨映射）。
 
 ---
 
