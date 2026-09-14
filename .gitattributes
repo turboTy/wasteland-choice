@@ -1,0 +1,25 @@
+# 统一换行符：仓库内一律 LF，避免 Windows/Linux 协作时全文 diff
+* text=auto eol=lf
+
+# 二进制资源不参与文本转换
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.pdf  binary
+*.zip  binary
+*.pptx binary
+*.xlsx binary
+*.docx binary
+
+# 文档与脚本明确按 LF 处理
+*.md   text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
+*.json text eol=lf
+*.py   text eol=lf
+*.sh   text eol=lf
+
+# Git 自动生成的文件，合并时不在 diff 中显示
+.memlog.md linguist-generated=true
