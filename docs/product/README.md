@@ -102,7 +102,18 @@ chk "prd-addendum"    "$P/docs/product/prd-addendum.md" "$R/addendum.md"
 - 口径以 `brief.md` / `prd.md` 为准；
 - 由 BMAD 的 `memlog.py` 追加，格式为 `- (decision) 文本`。
 
-## 八、升版操作
+## 八、版本控制纪律（血泪教训）
+
+| 规则 | 说明 |
+|---|---|
+| **新增/归档后立即纳管** | 任何新增或搬迁文件，**当轮就 `git add`**，`git status` 不得留未跟踪项（`??`） |
+| **别用 `head` 截断状态检查** | 检查时必须看完整输出。曾因 `git status --short \| head -5` 把 `??` 行截掉，导致问题被掩盖数轮 |
+| **推送前先探通道** | `git push --dry-run` 报 `non-fast-forward` 说明认证已通可直接推；报代理错误则是网络窗口未开 |
+| **不依赖 upstream 跟踪** | 本环境的沙箱不允许 `refs/remotes/` 落盘，`status` 会长期显示 `[gone]`——**这是环境特性，不是推送失败**。一律显式写 `git push origin main` |
+
+> **已发生的事故（2026-09-14 查出）**：PRD 整套目录 + v0.4/v0.5 归档共 **14 个文件从未 commit**，仅存在于本地磁盘、从未推送——本地一坏即永久丢失。根因是升版时写了文档却没提交，叠加用 `head -5` 检查状态掩盖了 `??` 行。
+
+## 九、升版操作
 
 完整流程（归档 → 写新版 → 双轨同步 → md5 校验 → 记审计 → 更新索引）见 skill：
 
